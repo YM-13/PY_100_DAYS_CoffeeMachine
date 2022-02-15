@@ -41,7 +41,8 @@ def report(current_resources, profit):
 
 # TODO: 2. Check resources sufficient to make drink order.
 def check_resources(current_resources, need_resources):
-	"""This function assumes that there are enough resources to prepare this drink. Данная функция предполагает наличие достаточного количества ресурсов для приготовления данного напитка"""
+	"""This function assumes that there are enough resources to prepare this drink.
+	Данная функция предполагает наличие достаточного количества ресурсов для приготовления данного напитка"""
 	for key in need_resources:
 		if need_resources[key] > current_resources[key]:
 			return f"Sorry there is not enough {key}."

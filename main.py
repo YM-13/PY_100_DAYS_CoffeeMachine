@@ -45,7 +45,8 @@ def check_resources(current_resources, need_resources):
 	Данная функция предполагает наличие достаточного количества ресурсов для приготовления данного напитка"""
 	for key in need_resources:
 		if need_resources[key] > current_resources[key]:
-			return f"Sorry there is not enough {key}."
+			print(f"Sorry there is not enough {key}.")
+			return False
 	return True
 
 
@@ -101,14 +102,14 @@ def coffee_machine_on():
 		else:
 			need_resources = MENU[wish]["ingredients"]
 			drink_price = MENU[wish]["cost"]
-			if check_resources(current_resources, need_resources) != True:
-				print(check_resources(current_resources, need_resources))
+			if check_resources(current_resources, need_resources) == True:
+				paid_money = process_coins()
+				profit["money"] += check_transaction(paid_money, drink_price)
+				current_resources = make_coffee(need_resources, current_resources)
+				print(f"Here is your {wish}. Enjoy!")
 			else:
 				pass
-			paid_money = process_coins()
-			profit["money"] += check_transaction(paid_money, drink_price)
-			current_resources = make_coffee(need_resources, current_resources)
-			print(f"Here is your {wish}. Enjoy!")
+
 
 
 
